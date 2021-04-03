@@ -1,0 +1,26 @@
+.card {
+    width: 370px;
+    padding-top: 20px;
+    background-color: #000;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    &:hover {
+        box-shadow: 0 6px 12px rgba(73, 90, 102, 0.07);
+        background-color: #222;
+    }
+}
+
+.name {
+    color: #fff;
+}
+
+.avatar {
+    width: 85%;
+}
