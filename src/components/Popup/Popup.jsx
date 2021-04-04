@@ -19,7 +19,6 @@ const Popup = ({ userData, handleDeleteUser }) => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
         dispatch(saveUserData(id, formData));
     };
 

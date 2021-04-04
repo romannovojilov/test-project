@@ -42,7 +42,7 @@ export const actions = {
         isFetching
     }),
     addUser: (userData) => ({
-        ADD_NEW_USER,
+        type: ADD_NEW_USER,
         userData
     })
 };

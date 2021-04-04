@@ -1,6 +1,5 @@
 import { usersAPI } from '../../API/users-requests';
 import { actions } from './users-actions';
-import { act } from '@testing-library/react';
 
 export const GET_USERS = 'SET_USERS';
 export const GET_PAGE = 'SET_PAGE';
@@ -117,8 +116,10 @@ export const togglePopup = () => {
 
 export const saveUserData = (userId, data) => {
     return async (dispatch) => {
+        dispatch(actions.toggleIsFetching(true));
         const userData = await usersAPI.setUserDataRequest(userId, data).then(resp => resp);
         dispatch(actions.setUserData(userData));
+        dispatch(actions.toggleIsFetching(false));
     };
 };
 
@@ -135,10 +136,10 @@ export const deleteUser = (userId) => {
 
 export const addUser = (userData) => {
     return async (dispatch) => {
-        const result = await usersAPI.addUserRequest(userData).then(resp => resp.ok);
+        const result = await usersAPI.addUserRequest(userData).then(resp => resp);
         console.log(result);
         if (result) {
-            dispatch(actions.addUser(userData));
+            dispatch(actions.addUser(result.id));
         }
     };
 }
