@@ -1,5 +1,7 @@
 .popup {
-    width: 400px;
+    padding: 50px 100px 0;
+    max-width: 400px;
+    width: 90%;
     height: 550px;
     border: 1px solid gray;
     background-color: #fff;
@@ -13,9 +15,46 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        opacity: 0.6;
+    }
 }
 
 .action {
     border: none;
     background-color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    transition: all 0.3s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.action_save {
+    right: 5px;
+}
+
+.action_delete {
+    left: 5px;
+}
+
+.data {
+}
+
+.avatar {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
 }

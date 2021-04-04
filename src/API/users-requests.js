@@ -9,5 +9,11 @@ export const usersAPI = {
     },
     getUserDataRequest(userId) {
         return fetchAPI(`users/${userId}`).then(resp => resp.json()).then(resp => resp);
+    },
+    setUserData(userId, data) {
+        return fetchAPI(`users/${userId}`, 'PUT', data).then(resp => resp.json()).then(resp => resp);
+    },
+    deleteUser(userId) {
+        return fetchAPI(`users/${userId}`, 'DELETE').then(resp => resp);
     }
 };
