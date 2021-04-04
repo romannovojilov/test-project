@@ -1,12 +1,12 @@
 import './App.css';
 import Area from './components/Area/Area';
-import CardsContainer from './components/CardsContainer/CardsContainer';
+import UsersList from './components/UsersList/UsersList';
 
 function App() {
     return (
         <div className="App">
             <Area>
-                <CardsContainer />
+                <UsersList />
             </Area>
         </div>
     );

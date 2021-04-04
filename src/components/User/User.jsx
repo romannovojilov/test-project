@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Card.module.scss';
+import styles from './User.module.scss';
 
-const Card = (props) => {
+const User = (props) => {
     const { firstName, lastName, avatar } = props;
     return (
         <div className={ `${ styles.card } ${ props.className }` }>
@@ -11,4 +11,4 @@ const Card = (props) => {
     );
 };
 
-export default Card;
+export default User;

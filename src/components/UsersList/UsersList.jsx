@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import styles from './CardsContainer.module.scss';
-import Card from '../Card/Card';
+import styles from './UsersList.module.scss';
+import User from '../User/User';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../Redux/Users/users-reducer';
+import Paginator from '../Paginator/Paginator';
+import AddUser from '../AddUser/AddUser';
 
-const CardsContainer = () => {
+const UsersList = () => {
     const users = useSelector(state => state.users);
 
     const dispatch = useDispatch();
@@ -14,10 +16,10 @@ const CardsContainer = () => {
     }, []);
 
     const cards = users.map(user => {
-        const {id, first_name, last_name, avatar, email} = user;
-        return <Card
+        const { id, first_name, last_name, avatar, email } = user;
+        return <User
             key={ id }
-            className={ styles.card }
+            className={ styles.user }
             firstName={ first_name }
             lastName={ last_name }
             avatar={ avatar }
@@ -25,10 +27,12 @@ const CardsContainer = () => {
         />;
     });
     return (
-        <div className={ styles.cards_container }>
+        <div className={ styles.users_list }>
             { cards }
+            <AddUser />
+            <Paginator />
         </div>
     );
 };
 
-export default CardsContainer;
+export default UsersList;
