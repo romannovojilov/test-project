@@ -64,7 +64,6 @@ export const usersReducer = (state = initialState, action) => {
             };
         }
         case DELETE_USER: {
-            console.log(action.users);
             return {
                 ...state,
                 users: state.users.filter(user => user.id !== action.userId)

@@ -6,8 +6,10 @@ import { deleteUser, getPage, getUserData, getUsers, togglePopup } from '../../R
 import Paginator from '../Paginator/Paginator';
 import AddUser from '../AddUser/AddUser';
 import Popup from '../Popup/Popup';
+import Preloader from '../Preloader/Preloader';
 
 const UsersList = () => {
+    const isFetching = useSelector(state => state.isFetching);
     const users = useSelector(state => state.users);
     const isPopupOpen = useSelector(state => state.isPopupOpen);
     const userData = useSelector(state => state.userData.data);
@@ -44,8 +46,14 @@ const UsersList = () => {
     });
     return (
         <div className={ styles.users_list }>
-            { cards }
-            <AddUser />
+            {
+                isFetching
+                    ? <Preloader />
+                    : <>
+                        { cards }
+                        <AddUser />
+                    </>
+            }
             <Paginator paginatorStyles={ styles.paginator } onPageChanged={ onPageChanged } />
             { isPopupOpen && userData && <Popup userData={ userData } handleDeleteUser={ handleDeleteUser } /> }
         </div>
