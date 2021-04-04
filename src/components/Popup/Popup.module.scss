@@ -1,0 +1,21 @@
+.popup {
+    width: 400px;
+    height: 550px;
+    border: 1px solid gray;
+    background-color: #fff;
+    position: absolute;
+}
+
+.close {
+    border: none;
+    padding: 5px 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.action {
+    border: none;
+    background-color: #fff;
+}

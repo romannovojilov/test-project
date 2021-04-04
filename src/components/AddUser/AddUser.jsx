@@ -3,7 +3,7 @@ import styles from './AddUser.module.scss';
 
 const AddUser = () => {
     return (
-        <div className={styles.add_user}>
+        <div className={ styles.add_user }>
             +
         </div>
     );

@@ -6,5 +6,8 @@ export const usersAPI = {
     },
     getUsersOnPageRequest(pageNum) {
         return fetchAPI(`users?page=${pageNum}`).then(resp => resp.json()).then(resp => resp);
+    },
+    getUserDataRequest(userId) {
+        return fetchAPI(`users/${userId}`).then(resp => resp.json()).then(resp => resp);
     }
 };

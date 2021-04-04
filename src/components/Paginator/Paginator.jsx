@@ -18,7 +18,7 @@ const Paginator = ({ onPageChanged, paginatorStyles, partSize = 5 }) => {
         setCurrentPage(num);
         onPageChanged(num);
     };
-    console.log(totalPages);
+
     useEffect(() => {
         dispatch(getTotalPages());
     }, []);

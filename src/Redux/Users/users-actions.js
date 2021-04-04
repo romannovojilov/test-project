@@ -1,4 +1,4 @@
-import { GET_PAGE, GET_TOTAL_PAGES, GET_USERS } from './users-reducer';
+import { GET_PAGE, GET_TOTAL_PAGES, GET_USER_DATA, GET_USERS, TOGGLE_POPUP } from './users-reducer';
 
 export const actions = {
     getUsers: (users) => ({
@@ -9,8 +9,16 @@ export const actions = {
         type: GET_TOTAL_PAGES,
         totalPages
     }),
-    getPageUsers: (users) => ({
+    getNewUser: (users) => ({
         type: GET_PAGE,
         users
+    }),
+    getUserData: (userData) => ({
+        type: GET_USER_DATA,
+        userData
+    }),
+    togglePopup: (isPopupOpen) => ({
+        type: TOGGLE_POPUP,
+        isPopupOpen
     })
 };

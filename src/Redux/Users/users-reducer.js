@@ -4,10 +4,15 @@ import { actions } from './users-actions';
 export const GET_USERS = 'SET_USERS';
 export const GET_PAGE = 'SET_PAGE';
 export const GET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
+export const ADD_NEW_USER = 'ADD_USER';
+export const GET_USER_DATA = 'EDIT_USER_INFO';
+export const TOGGLE_POPUP = 'TOGGLE_POPUP';
 
 const initialState = {
     users: [],
-    totalPages: 0
+    totalPages: 0,
+    userData: {},
+    isPopupOpen: false
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -23,6 +28,24 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 totalPages: action.totalPages
             };
+        }
+        case ADD_NEW_USER: {
+            return {
+                ...state,
+                users: action.users
+            }
+        }
+        case GET_USER_DATA: {
+            return {
+                ...state,
+                userData: action.userData
+            }
+        }
+        case TOGGLE_POPUP: {
+            return {
+                ...state,
+                isPopupOpen: state.isPopupOpen
+            }
         }
         default: {
             return state;
@@ -50,3 +73,10 @@ export const getTotalPages = () => {
         dispatch(actions.getTotalPages(totalPages));
     };
 };
+export const getUserData = (userId) => {
+    return async (dispatch) => {
+        const userData = await usersAPI.getUserDataRequest(userId).then(resp => resp);
+        console.log(userData);
+        dispatch(actions.getUserData(userData));
+    };
+}
