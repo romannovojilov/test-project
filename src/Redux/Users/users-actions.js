@@ -1,4 +1,5 @@
 import {
+    ADD_NEW_USER,
     DELETE_USER,
     GET_PAGE,
     GET_TOTAL_PAGES,
@@ -39,5 +40,9 @@ export const actions = {
     toggleIsFetching: (isFetching) => ({
         type: TOGGLE_IS_FETCHING,
         isFetching
+    }),
+    addUser: (userData) => ({
+        ADD_NEW_USER,
+        userData
     })
 };

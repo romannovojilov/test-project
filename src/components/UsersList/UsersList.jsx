@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './UsersList.module.scss';
 import User from '../User/User';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, getPage, getUserData, getUsers, togglePopup } from '../../Redux/Users/users-reducer';
+import { addUser, deleteUser, getPage, getUserData, getUsers, togglePopup } from '../../Redux/Users/users-reducer';
 import Paginator from '../Paginator/Paginator';
 import AddUser from '../AddUser/AddUser';
 import Popup from '../Popup/Popup';
@@ -32,6 +32,10 @@ const UsersList = () => {
         dispatch(deleteUser(userId));
     };
 
+    const handleAddNewUser = () => {
+        dispatch(addUser());
+    };
+
     const cards = users.map(user => {
         const { id, first_name, last_name, avatar } = user;
         return <User
@@ -51,7 +55,7 @@ const UsersList = () => {
                     ? <Preloader />
                     : <>
                         { cards }
-                        <AddUser />
+                        <AddUser handleAddNewUser={ handleAddNewUser } />
                     </>
             }
             <Paginator paginatorStyles={ styles.paginator } onPageChanged={ onPageChanged } />

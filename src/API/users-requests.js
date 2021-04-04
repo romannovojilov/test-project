@@ -10,10 +10,13 @@ export const usersAPI = {
     getUserDataRequest(userId) {
         return fetchAPI(`users/${userId}`).then(resp => resp.json()).then(resp => resp);
     },
-    setUserData(userId, data) {
+    setUserDataRequest(userId, data) {
         return fetchAPI(`users/${userId}`, 'PUT', data).then(resp => resp.json()).then(resp => resp);
     },
-    deleteUser(userId) {
+    deleteUserRequest(userId) {
         return fetchAPI(`users/${userId}`, 'DELETE').then(resp => resp);
+    },
+    addUserRequest() {
+        return fetchAPI('users', 'POST').then(resp => resp.json());
     }
 };

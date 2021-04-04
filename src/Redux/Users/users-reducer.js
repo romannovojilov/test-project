@@ -1,10 +1,11 @@
 import { usersAPI } from '../../API/users-requests';
 import { actions } from './users-actions';
+import { act } from '@testing-library/react';
 
 export const GET_USERS = 'SET_USERS';
 export const GET_PAGE = 'SET_PAGE';
 export const GET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
-export const ADD_NEW_USER = 'ADD_USER';
+export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const GET_USER_DATA = 'GET_USER_DATA';
 export const SET_USER_DATA = 'SET_USER_DATA';
 export const TOGGLE_POPUP = 'TOGGLE_POPUP';
@@ -42,7 +43,7 @@ export const usersReducer = (state = initialState, action) => {
         case ADD_NEW_USER: {
             return {
                 ...state,
-                users: action.users
+                users: [...state.users, action.userData]
             };
         }
         case GET_USER_DATA: {
@@ -116,7 +117,7 @@ export const togglePopup = () => {
 
 export const saveUserData = (userId, data) => {
     return async (dispatch) => {
-        const userData = await usersAPI.setUserData(userId, data).then(resp => resp);
+        const userData = await usersAPI.setUserDataRequest(userId, data).then(resp => resp);
         dispatch(actions.setUserData(userData));
     };
 };
@@ -124,10 +125,20 @@ export const saveUserData = (userId, data) => {
 export const deleteUser = (userId) => {
     return async (dispatch) => {
         dispatch(actions.toggleIsFetching(true));
-        const result = await usersAPI.deleteUser(userId).then(resp => resp.ok);
+        const result = await usersAPI.deleteUserRequest(userId).then(resp => resp.ok);
         if (result) {
             dispatch(actions.deleteUser(userId));
         }
         dispatch(actions.toggleIsFetching(false));
     };
 };
+
+export const addUser = (userData) => {
+    return async (dispatch) => {
+        const result = await usersAPI.addUserRequest(userData).then(resp => resp.ok);
+        console.log(result);
+        if (result) {
+            dispatch(actions.addUser(userData));
+        }
+    };
+}

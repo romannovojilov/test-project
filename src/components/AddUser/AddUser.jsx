@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './AddUser.module.scss';
 
-const AddUser = () => {
+const AddUser = ({ handleAddNewUser }) => {
     return (
-        <div className={ styles.add_user }>
+        <div className={ styles.add_user } onClick={ () => handleAddNewUser() }>
             +
         </div>
     );

@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTotalPages } from '../../Redux/Users/users-reducer';
 
 const Paginator = ({ onPageChanged, paginatorStyles, partSize = 5 }) => {
-    const dispatch = useDispatch();
-    const { totalPages } = useSelector(state => state);
-
     const [currentPage, setCurrentPage] = useState(1);
+    const { totalPages } = useSelector(state => state);
+    const dispatch = useDispatch();
     const pages = [];
 
     for (let i = 0; i < totalPages; i++) {
