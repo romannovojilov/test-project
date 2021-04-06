@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './AddUser.module.scss';
-
-const AddUser = ({ handleAddNewUser }) => {
+// это абстрактная кнопка не имеющая бизнес логику, а ты назвал не так, будто в ней обработка добавления пользователя хранится
+const AddButton = ({ onClick, ...props }) => {
     return (
-        <div className={ styles.add_user } onClick={ () => handleAddNewUser() }>
+        <button className={ styles.add_user } onClick={onClick} type="button" {...props}>
             +
-        </div>
+        </button>
     );
 };
 
-export default AddUser;
+export default AddButton;
